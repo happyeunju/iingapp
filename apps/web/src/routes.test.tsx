@@ -1,7 +1,17 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { AppRoutes } from "./routes";
+
+const getSessionMock = vi.fn(() =>
+  Promise.resolve({ data: { session: null } })
+);
+
+vi.mock("./lib/supabase", () => ({
+  getSupabase: () => ({
+    auth: { getSession: getSessionMock },
+  }),
+}));
 
 function renderAt(path: string) {
   return render(
