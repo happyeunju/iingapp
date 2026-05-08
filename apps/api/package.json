@@ -1,0 +1,24 @@
+{
+  "name": "@iingapp/api",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "build": "wrangler deploy --dry-run",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@iingapp/shared": "workspace:*",
+    "hono": "^4.5.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240620.0",
+    "@cloudflare/vitest-pool-workers": "^0.4.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0",
+    "wrangler": "^4.0.0"
+  }
+}

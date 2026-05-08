@@ -1,0 +1,7 @@
+name = "iingapp-api"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ENV = "development"
