@@ -3,8 +3,8 @@ import { render, screen } from "@testing-library/react";
 import { App } from "./App";
 
 describe("App", () => {
-  it("앱 제목을 보여준다", () => {
+  it("기본 진입 시 Today 페이지가 보인다", () => {
     render(<App />);
-    expect(screen.getByText(/iingApp/i)).toBeInTheDocument();
+    expect(screen.getByTestId("page-today")).toBeInTheDocument();
   });
 });

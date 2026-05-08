@@ -1,7 +1,12 @@
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./routes";
+
 export function App() {
   return (
-    <main className="min-h-screen flex items-center justify-center p-6">
-      <h1 className="text-2xl font-bold">iingApp</h1>
-    </main>
+    <BrowserRouter>
+      <main className="min-h-screen p-6">
+        <AppRoutes />
+      </main>
+    </BrowserRouter>
   );
 }
