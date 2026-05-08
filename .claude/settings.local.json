@@ -20,7 +20,9 @@
       "Bash(node scripts/generate-placeholder-icons.mjs)",
       "Bash(pnpm --filter @iingapp/web build)",
       "Bash(rm scripts/generate-placeholder-icons.mjs)",
-      "Bash(node scripts/generate-icons.mjs)"
+      "Bash(node scripts/generate-icons.mjs)",
+      "Bash(rm -f apps/web/src/*.js apps/web/src/pages/*.js apps/web/tsconfig.tsbuildinfo bash.exe.stackdump)",
+      "Bash(git rm *)"
     ]
   }
 }

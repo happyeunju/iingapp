@@ -9,5 +9,11 @@ dist
 .vscode
 coverage
 
+# TypeScript build artifacts
+*.tsbuildinfo
+
+# Windows / shell artifacts
+*.stackdump
+
 # Large audio assets (handled via R2 storage, not git)
 Contents/
