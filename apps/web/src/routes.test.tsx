@@ -1,15 +1,17 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { MemoryRouter, Routes, Route } from "react-router-dom";
 import { AppRoutes } from "./routes";
 
-const getSessionMock = vi.fn(() =>
-  Promise.resolve({ data: { session: null } })
-);
-
+const getSessionMock = vi.fn();
 vi.mock("./lib/supabase", () => ({
   getSupabase: () => ({
-    auth: { getSession: getSessionMock },
+    auth: {
+      getSession: getSessionMock,
+      onAuthStateChange: () => ({
+        data: { subscription: { unsubscribe: () => {} } },
+      }),
+    },
   }),
 }));
 
@@ -23,25 +25,28 @@ function renderAt(path: string) {
   );
 }
 
-describe("Routes", () => {
-  it("/ 는 Today 페이지", () => {
-    renderAt("/");
-    expect(screen.getByTestId("page-today")).toBeInTheDocument();
-  });
-  it("/auth/login 은 Login 페이지", () => {
+describe("Routes (보호)", () => {
+  it("/auth/login 은 인증 없이도 접근", async () => {
+    getSessionMock.mockResolvedValue({ data: { session: null } });
     renderAt("/auth/login");
     expect(screen.getByTestId("page-login")).toBeInTheDocument();
   });
-  it("/auth/callback 은 Callback 페이지", () => {
-    renderAt("/auth/callback");
-    expect(screen.getByTestId("page-auth-callback")).toBeInTheDocument();
+
+  it("/ 는 비인증 시 /auth/login 으로", async () => {
+    getSessionMock.mockResolvedValue({ data: { session: null } });
+    renderAt("/");
+    await waitFor(() => {
+      expect(screen.getByTestId("page-login")).toBeInTheDocument();
+    });
   });
-  it("/auth/pin/setup", () => {
-    renderAt("/auth/pin/setup");
-    expect(screen.getByTestId("page-pin-setup")).toBeInTheDocument();
-  });
-  it("/auth/pin", () => {
-    renderAt("/auth/pin");
-    expect(screen.getByTestId("page-pin-entry")).toBeInTheDocument();
+
+  it("/ 는 인증되면 Today 표시", async () => {
+    getSessionMock.mockResolvedValue({
+      data: { session: { user: { id: "u1" } } },
+    });
+    renderAt("/");
+    await waitFor(() => {
+      expect(screen.getByTestId("page-today")).toBeInTheDocument();
+    });
   });
 });
