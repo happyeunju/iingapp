@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@iingapp/shared": "workspace:*",
+    "@supabase/supabase-js": "^2.105.3",
     "hono": "^4.5.0"
   },
   "devDependencies": {
