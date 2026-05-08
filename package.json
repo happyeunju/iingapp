@@ -11,10 +11,12 @@
     "test": "pnpm -r test",
     "dev:web": "pnpm --filter @iingapp/web dev",
     "dev:api": "pnpm --filter @iingapp/api dev",
-    "lint": "pnpm -r lint"
+    "lint": "pnpm -r lint",
+    "supabase": "supabase"
   },
   "devDependencies": {
     "sharp": "^0.34.5",
+    "supabase": "^2.98.2",
     "typescript": "^5.4.0"
   }
 }
