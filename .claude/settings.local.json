@@ -7,7 +7,20 @@
       "Bash(git init *)",
       "Bash(pnpm install *)",
       "Bash(git add *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(git check-ignore *)",
+      "Bash(Get-ChildItem *)",
+      "Bash(pnpm --filter @iingapp/shared test)",
+      "Bash(pnpm --filter @iingapp/shared build)",
+      "Bash(grep -E '\\\\.\\(ts|json\\)$')",
+      "Bash(pnpm --filter @iingapp/shared lint)",
+      "Bash(pnpm --filter @iingapp/web test)",
+      "Bash(pnpm add *)",
+      "Bash(Select-Object FullName)",
+      "Bash(node scripts/generate-placeholder-icons.mjs)",
+      "Bash(pnpm --filter @iingapp/web build)",
+      "Bash(rm scripts/generate-placeholder-icons.mjs)",
+      "Bash(node scripts/generate-icons.mjs)"
     ]
   }
 }
