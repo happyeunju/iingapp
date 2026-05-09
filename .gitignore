@@ -17,3 +17,4 @@ coverage
 
 # Large audio assets (handled via R2 storage, not git)
 Contents/
+.claude/settings.local.json
