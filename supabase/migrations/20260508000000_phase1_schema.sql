@@ -216,9 +216,10 @@ CREATE MATERIALIZED VIEW weakness_scores AS
 SELECT
   a.sentence_id,
   s.user_id,
-  SUM(et.severity)
+  SUM(
+    et.severity
     * EXP(-EXTRACT(EPOCH FROM (now() - a.created_at)) / 86400.0 * 0.3)
-    AS score,
+  ) AS score,
   MAX(a.created_at)                     AS last_attempted,
   0                                     AS correct_streak,
   FALSE                                 AS graduated
