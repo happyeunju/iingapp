@@ -4,7 +4,7 @@ compatibility_date = "2026-05-01"
 compatibility_flags = ["nodejs_compat"]
 
 [vars]
-ENV = "development"
-JWT_SECRET = "test-secret-do-not-use-in-prod"
-SUPABASE_URL = "https://example.supabase.co"
-SUPABASE_SERVICE_ROLE_KEY = "test-service-role-key"
+ENV = "production"
+# Secrets (JWT_SECRET, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY) are set via
+# `wrangler secret put <NAME>` — encrypted, not stored in this file.
+# For local `wrangler dev`, use apps/api/.dev.vars (gitignored).
